@@ -1,95 +1,95 @@
 const storyData = {
     // Question 1 - Should go to Question 2, NOT directly to endings!
     q1: {
-        question: "The cosmos asks: What energy calls to you?",
+        question: "What is the most important chapter of your life?",
         choices: {
-            top: { text: "Bold Lightning Energy", next: "q2_ending1" },  // FIXED
-            left: { text: "Flowing Water Energy", next: "q2_ending2" },  // FIXED
-            right: { text: "Mystical Star Energy", next: "q2_ending3" }  // FIXED
+            top: { text: "Love Life", next: "q2_ending1" },  // FIXED
+            left: { text: "Glorious Success", next: "q2_ending2" },  // FIXED
+            right: { text: "Dear Family", next: "q2_ending3" }  // FIXED
         }
     },
 
     // Question 2 for Ending 1 path
     q2_ending1: {
-        question: "Your lightning path reveals: How will you channel this energy?",
+        question: "What kind of love life you want?",
         choices: {
-            top: { text: "Through daring adventures", next: "q3_ending1_a" },  // FIXED
-            left: { text: "Through bold creativity", next: "q3_ending1_b" },   // FIXED
+            top: { text: "Lots of Attraction", next: "q3_ending1_a" },  // FIXED
+            left: { text: "Unmatched Reassurance", next: "q3_ending1_b" },   // FIXED
             right: { text: "Go back and choose again", next: "q1" }
         }
     },
 
     // Question 2 for Ending 2 path
     q2_ending2: {
-        question: "Your water path reveals: What will you nurture?",
+        question: "Iss year Success kaisse milni chahyie?",
         choices: {
-            top: { text: "Deep connections", next: "q3_ending2_a" },      // FIXED
-            left: { text: "Inner peace", next: "q3_ending2_b" },           // FIXED
+            top: { text: "Bande ke saath", next: "q3_ending2_a" },      // FIXED
+            left: { text: "Ya bande ke baad", next: "q3_ending2_b" },           // FIXED
             right: { text: "Go back and choose again", next: "q1" }
         }
     },
 
     // Question 2 for Ending 3 path
     q2_ending3: {
-        question: "Your star path reveals: What will you create?",
+        question: "Family me kisko priority deti!!!",
         choices: {
-            top: { text: "Artistic expression", next: "q3_ending3_a" },   // FIXED
-            left: { text: "Magical moments", next: "q3_ending3_b" },       // FIXED
+            top: { text: "Ever beautiful and intelligent Aanchl", next: "q3_ending3_a" },   // FIXED
+            left: { text: "Super Cool and Ever achieving Devesh", next: "q3_ending3_b" },       // FIXED
             right: { text: "Go back and choose again", next: "q1" }
         }
     },
 
     // Rest of your code stays the same...
     q3_ending1_a: {
-        question: "Your adventure awaits: Which realm calls to you?",
+        question: "Kaissi Attraction chahyie?",
         choices: {
-            top: { text: "The unknown wilderness", next: "ending1_a_final" },
-            left: { text: "The challenge mountain", next: "ending1_a_alt" },
+            top: { text: "Kambalo ke andr waali", next: "ending1_a_final" },
+            left: { text: "Novels waali", next: "ending1_a_alt" },
             right: { text: "Go back and reconsider", next: "q2_ending1" }
         }
     },
 
     q3_ending1_b: {
-        question: "Your creative fire burns: How will it manifest?",
+        question: "What matters most in reassurance?",
         choices: {
-            top: { text: "Through fearless expression", next: "ending1_b_final" },
-            left: { text: "Through innovation", next: "ending1_b_alt" },
+            top: { text: "Gftsssssssssssss", next: "ending1_b_final" },
+            left: { text: "Promisessssssssssss", next: "ending1_b_alt" },
             right: { text: "Go back and reconsider", next: "q2_ending1" }
         }
     },
 
     q3_ending2_a: {
-        question: "Your connections deepen: What matters most?",
+        question: "Bande ka relation uske boss ke saath kaissa hona chahyie?",
         choices: {
-            top: { text: "Quality time together", next: "ending2_a_final" },
-            left: { text: "Vulnerable honesty", next: "ending2_a_alt" },
+            top: { text: "Ek dum flirty boss ke saath ladka ho ya ladki paisso ke liye kuch bhi", next: "ending2_a_final" },
+            left: { text: "Ek nazar bhi dekh li usne toh same day divorce", next: "ending2_a_alt" },
             right: { text: "Go back and reconsider", next: "q2_ending2" }
         }
     },
 
     q3_ending2_b: {
-        question: "Your inner peace grows: How will you maintain it?",
+        question: "Success mil gyi but bande ki success beech me aa rahi?",
         choices: {
-            top: { text: "Daily mindful moments", next: "ending2_b_final" },
-            left: { text: "Setting boundaries", next: "ending2_b_alt" },
+            top: { text: "Apni job chord degi", next: "ending2_b_final" },
+            left: { text: "Uski job chordwa degi ghr jamai banayegi", next: "ending2_b_alt" },
             right: { text: "Go back and reconsider", next: "q2_ending2" }
         }
     },
 
     q3_ending3_a: {
-        question: "Your art awaits: What medium speaks to your soul?",
+        question: "Deeeep, I know tu mujhe hi chunegi, ab bata meri kya cheez psnd hai",
         choices: {
-            top: { text: "Visual creation", next: "ending3_a_final" },
-            left: { text: "Written words", next: "ending3_a_alt" },
+            top: { text: "Nature", next: "ending3_a_final" },
+            left: { text: "Efforts", next: "ending3_a_final" },
             right: { text: "Go back and reconsider", next: "q2_ending3" }
         }
     },
 
     q3_ending3_b: {
-        question: "Your magic manifests: How will you share it?",
+        question: "Hehe deep mujhe pata tha, ab bata meri kya cheez psnd hai",
         choices: {
-            top: { text: "Through spontaneous joy", next: "ending3_b_final" },
-            left: { text: "Through thoughtful gestures", next: "ending3_b_alt" },
+            top: { text: "Nature", next: "ending3_a_final" },
+            left: { text: "Efforts", next: "ending3_a_final" },
             right: { text: "Go back and reconsider", next: "q2_ending3" }
         }
     },
@@ -97,108 +97,108 @@ const storyData = {
     // All your endings stay exactly the same
     ending1_a_final: {
         isEnding: true,
-        title: "🌟 THE BOLD ADVENTURER 🌟",
+        title: "Aayee Tharki",
         content: `
-            <p><strong>Your cosmic destiny reveals:</strong> You're meant for wild, untamed adventures this year!</p>
-            <p>The universe sees your fearless spirit and is preparing unexpected journeys for you. Every path you choose leads to growth, every challenge shapes you into someone even more incredible.</p>
-            <p><strong>Your 2026 Promise:</strong> Take the leap when opportunities scare you. The best stories start with "I can't believe I did that."</p>
-            <p><em>P.S. - [Your personalized message here] 💫</em></p>
+            <p><strong>Pata tha yahi chunegi tu ek dum!</p>
+            <p>Paati tera thak jayega tera, sheelajeet khilate rahio warna maza nhi aane wala tujhe.</p>
+            <p><strong>Bed tak toh pohochne s phole h jhande gaad degi"</p>
+            <p><em>Sex se bhahr na aa skri</em></p>
         `
     },
 
     ending1_a_alt: {
         isEnding: true,
-        title: "⚡ THE CHALLENGE SEEKER ⚡",
+        title: "Delulu",
         content: `
-            <p><strong>Your cosmic destiny reveals:</strong> You thrive when pushing your limits!</p>
-            <p>This year brings growth through challenges you'll conquer. Each mountain you climb reveals a stronger version of you waiting at the summit.</p>
-            <p><strong>Your 2026 Promise:</strong> Embrace the hard stuff. You're capable of so much more than you realize.</p>
-            <p><em>P.S. - [Your personalized message here] 💪</em></p>
+            <p><strong>But tera patti indian hoga yeh novel waala angrezz nhi!</p>
+            <p>Novel jaissa shareef banda rehne hi nhi degi tere se milte hi barbaad</p>
+            <p><strong>Agr aissa banda patti ban gaya toh ameer toh hoga hum dono ko adopt kr lio fir</p>
+            <p><em>Sapne dekhna achi baat hai but aukaat mai</em></p>
         `
     },
 
     ending1_b_final: {
         isEnding: true,
-        title: "🎨 THE FEARLESS CREATOR 🎨",
+        title: "Kutti",
         content: `
-            <p><strong>Your cosmic destiny reveals:</strong> Your creativity is your superpower this year!</p>
-            <p>The universe is giving you permission to create without fear. Every idea deserves to exist, every project adds color to the world.</p>
-            <p><strong>Your 2026 Promise:</strong> Make that thing you keep thinking about. Don't wait for perfect timing.</p>
-            <p><em>P.S. - [Your personalized message here] 🌈</em></p>
+            <p><strong>Ha ha gift lele bhar bhar ke</p>
+            <p>Santa claus se shaadi kar lio har din gift</p>
+            <p><strong>but really koi itna gift dene waala mille toh anchl aur mujhe dono ko bhi bhijwa dio gift.</p>
+            <p><em>Gift mehnge hi lio</em></p>
         `
     },
 
     ending1_b_alt: {
         isEnding: true,
-        title: "💡 THE INNOVATOR 💡",
+        title: "Chutiya hai tu",
         content: `
-            <p><strong>Your cosmic destiny reveals:</strong> You see solutions others miss!</p>
-            <p>This year rewards your unique perspective. Your innovative thinking will open doors you didn't know existed.</p>
-            <p><strong>Your 2026 Promise:</strong> Trust your ideas. They're weird for a reason—they're yours.</p>
-            <p><em>P.S. - [Your personalized message here] ✨</em></p>
+            <p><strong>Promises se kya hota deep relation banao deep leke jao</p>
+            <p>Jabtk gehraio me nhi jata tb tk koi meaning nhi.</p>
+            <p><strong>Promise leke kya karegi usme kuch rakha thodi hai</p>
+            <p><em>Promise toh thod dete hai log hum dono ko chord kr we are different.</em></p>
         `
     },
 
     ending2_a_final: {
         isEnding: true,
-        title: "💝 THE CONNECTION KEEPER 💝",
+        title: "Harami",
         content: `
-            <p><strong>Your cosmic destiny reveals:</strong> Your relationships are your treasure this year!</p>
-            <p>The universe blesses quality time with those who matter. Every shared moment becomes a memory you'll cherish forever.</p>
-            <p><strong>Your 2026 Promise:</strong> Be present. Put the phone down and be fully there.</p>
-            <p><em>P.S. - [Your personalized message here] 💖</em></p>
+            <p><strong>Jal gayi na success s uski</p>
+            <p>Ghar m Chulha jlega flirt s krne de</p>
+            <p><strong>Aa h gya paisa h toh sb h wala mindset</p>
+            <p><em>Shi h beta paise k liye be h d pati ko</em></p>
         `
     },
 
     ending2_a_alt: {
         isEnding: true,
-        title: "🤝 THE AUTHENTIC ONE 🤝",
+        title: "Sakht",
         content: `
-            <p><strong>Your cosmic destiny reveals:</strong> Vulnerability is your strength this year!</p>
-            <p>Real connections form when we show up honestly. This year rewards your courage to be truly seen.</p>
-            <p><strong>Your 2026 Promise:</strong> Say the scary true things. You'll be amazed at what happens.</p>
-            <p><em>P.S. - [Your personalized message here] 💫</em></p>
+            <p><strong>Katega phir bhji</p>
+            <p>Kya ise duniya accept kregi yah toxicity manegi</p>
+            <p><strong>Tu b kr kr lio apne wale s naa Itta kya hain</p>
+            <p><em>Krega toh voh tb b bs tere peeth peeche</em></p>
         `
     },
 
     ending2_b_final: {
         isEnding: true,
-        title: "🧘 THE PEACEFUL SOUL 🧘",
+        title: "Jhuti",
         content: `
-            <p><strong>Your cosmic destiny reveals:</strong> Your inner peace radiates outward this year!</p>
-            <p>The universe supports your journey to calm. Every mindful moment compounds into a life that feels right.</p>
-            <p><strong>Your 2026 Promise:</strong> Protect your peace fiercely. It's not selfish, it's essential.</p>
-            <p><em>P.S. - [Your personalized message here] 🌸</em></p>
+            <p><strong>Hoga hi nhi aissa hum dono bhot acche se jante</p>
+            <p>Ghr pr tere se saasu ma bhot kaam karwayegi mt kr aissa</p>
+            <p><strong>Sassu ma itne taane degi na ki job pr boss ki gaaliya aasan hogi</p>
+            <p><em>Kaam kr le kutti kitna aaram kregi</em></p>
         `
     },
 
     ending2_b_alt: {
         isEnding: true,
-        title: "🛡️ THE BOUNDARY SETTER 🛡️",
+        title: "BKL",
         content: `
-            <p><strong>Your cosmic destiny reveals:</strong> Saying no is saying yes to yourself this year!</p>
-            <p>The universe applauds your self-respect. Every boundary you set is an act of self-love.</p>
-            <p><strong>Your 2026 Promise:</strong> Your time and energy are sacred. Guard them well.</p>
-            <p><em>P.S. - [Your personalized message here] 💪</em></p>
+            <p><strong>Ek dum gaadaro waali baat ki hai</p>
+            <p>Bechara vo banda ruka taaki teri success mil jae ab tu usse thukra rahi glt baat</p>
+            <p><strong>Ladko ke dil ke saath khelna glt baat hai deeeeep</p>
+            <p><em>Sudhar ja Sudhar ja</em></p>
         `
     },
 
     ending3_a_final: {
         isEnding: true,
-        title: "🎨 THE VISUAL DREAMER 🎨",
+        title: "Enchanting lioness",
         content: `
-            <p><strong>Your cosmic destiny reveals:</strong> Your visual creations inspire others this year!</p>
-            <p>The universe flows through your artistic eye. Every piece you create adds beauty to the world.</p>
-            <p><strong>Your 2026 Promise:</strong> Create for the joy of it. The world needs your perspective.</p>
-            <p><em>P.S. - [Your personalized message here] 🌈</em></p>
+            <p><strong>You make everyone feel in awe of you </p>
+            <p>You always make sure your each effort is 100 percent like a lions hunt</p>
+            <p><strong>Hum Dono hi hai tere life me aur koi teesra aa nhi skta (this is threat)</p>
+            <p><em>Happy Birthday once again deep, lots of love from Anchl & Devesh</em></p>
         `
     },
 
     ending3_a_alt: {
         isEnding: true,
-        title: "✍️ THE WORD WEAVER ✍️",
+        title: "True Ending",
         content: `
-            <p><strong>Your cosmic destiny reveals:</strong> Your words have power this year!</p>
+            <p><strong>Yahi sirf sahi jawab hai baaki sab toh frzi hai ab pata </p>
             <p>The universe speaks through your writing. Every sentence you craft carries meaning someone needs to hear.</p>
             <p><strong>Your 2026 Promise:</strong> Write your truth. Someone out there needs to read it.</p>
             <p><em>P.S. - [Your personalized message here] 📖</em></p>
