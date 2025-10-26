@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Adventure</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Arial', sans-serif;
+        }
+        #gameContainer {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        canvas {
+            border: 3px solid #333;
+            border-radius: 10px;
+            background: #87ceeb;
+            display: block;
+            margin: 10px auto;
+        }
+        #instructions {
+            margin: 15px 0;
+            color: #333;
+            font-size: 16px;
+        }
+        #messageBox {
+            min-height: 100px;
+            max-width: 600px;
+            margin: 15px auto;
+            padding: 20px;
+            background: #f0f0f0;
+            border-radius: 10px;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .discovered {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+        #counter {
+            font-size: 18px;
+            color: #667eea;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        .celebration {
+            animation: rainbow 3s linear infinite;
+        }
+        @keyframes rainbow {
+            0% { color: #ff0000; }
+            16% { color: #ff8800; }
+            33% { color: #ffff00; }
+            50% { color: #00ff00; }
+            66% { color: #0088ff; }
+            83% { color: #8800ff; }
+            100% { color: #ff0000; }
+        }
+        .sparkle {
+            display: inline-block;
+            animation: sparkle 1s ease-in-out infinite;
+        }
+        @keyframes sparkle {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.2) rotate(180deg); }
+        }
+    </style>
+</head>
+<body>
+    <div id="gameContainer">
+        <h1>🎮 Birthday Adventure Explorer 🎮</h1>
+        <div id="instructions">
+            Use Arrow Keys or WASD to move<br>
+            Find all the special memories! ✨
+        </div>
+        <canvas id="gameCanvas" width="600" height="400"></canvas>
+        <div id="counter">Memories Found: <span id="count">0</span>/5</div>
+        <div id="messageBox">
+            Welcome! Explore the world to discover special memories and poems.<br>
+            Your journey begins now... 🌟
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const messageBox = document.getElementById('messageBox');
+        const countDisplay = document.getElementById('count');
+
+        // Game state
+        const player = {
+            x: 50,
+            y: 50,
+            width: 30,
+            height: 30,
+            speed: 3,
+            color: '#ff6b6b'
+        };
+
+        const keys = {};
+        let discoveredCount = 0;
+        let gameComplete = false;
+
+        // Special locations with memories and poems
+        const memories = [
+            {
+                x: 150, y: 100, width: 40, height: 40,
+                discovered: false,
+                icon: '🌸',
+                message: "Like flowers blooming in spring,\nYour smile makes my heart sing.\nEach day with you feels so new,\nHappy moments, all because of you! 🌸"
+            },
+            {
+                x: 450, y: 80, width: 40, height: 40,
+                discovered: false,
+                icon: '⭐',
+                message: "You shine brighter than any star,\nNo matter how near or far.\nYour light guides me through each day,\nIn my heart, you'll always stay! ⭐"
+            },
+            {
+                x: 300, y: 250, width: 40, height: 40,
+                discovered: false,
+                icon: '🎵',
+                message: "Every memory is a song,\nWith you is where I belong.\nLaughter echoes, joy takes flight,\nYou make everything feel right! 🎵"
+            },
+            {
+                x: 100, y: 320, width: 40, height: 40,
+                discovered: false,
+                icon: '🌈',
+                message: "After every storm, a rainbow appears,\nYou've brightened all my years.\nColors dance when you are near,\nThank you for being here! 🌈"
+            },
+            {
+                x: 500, y: 300, width: 40, height: 40,
+                discovered: false,
+                icon: '💝',
+                message: "This final gift I give to you,\nIs a love that's pure and true.\nTogether we'll make memories more,\nEach day, I cherish you even more! 💝"
+            }
+        ];
+
+        // Decorative elements
+        const decorations = [
+            { x: 50, y: 150, type: '🌳' },
+            { x: 250, y: 50, type: '🌳' },
+            { x: 400, y: 200, type: '🌳' },
+            { x: 550, y: 150, type: '🌺' },
+            { x: 200, y: 350, type: '🌺' },
+            { x: 350, y: 150, type: '🦋' },
+            { x: 150, y: 250, type: '🦋' }
+        ];
+
+        // Input handling
+        document.addEventListener('keydown', (e) => {
+            keys[e.key.toLowerCase()] = true;
+        });
+
+        document.addEventListener('keyup', (e) => {
+            keys[e.key.toLowerCase()] = false;
+        });
+
+        // Update player position
+        function updatePlayer() {
+            if (gameComplete) return;
+
+            if (keys['arrowup'] || keys['w']) player.y -= player.speed;
+            if (keys['arrowdown'] || keys['s']) player.y += player.speed;
+            if (keys['arrowleft'] || keys['a']) player.x -= player.speed;
+            if (keys['arrowright'] || keys['d']) player.x += player.speed;
+
+            // Boundary checking
+            player.x = Math.max(0, Math.min(canvas.width - player.width, player.x));
+            player.y = Math.max(0, Math.min(canvas.height - player.height, player.y));
+        }
+
+        // Check collision with memories
+        function checkCollisions() {
+            memories.forEach((memory, index) => {
+                if (!memory.discovered &&
+                    player.x < memory.x + memory.width &&
+                    player.x + player.width > memory.x &&
+                    player.y < memory.y + memory.height &&
+                    player.y + player.height > memory.y) {
+                    
+                    memory.discovered = true;
+                    discoveredCount++;
+                    countDisplay.textContent = discoveredCount;
+                    messageBox.innerHTML = memory.message.replace(/\n/g, '<br>');
+                    
+                    if (discoveredCount === memories.length) {
+                        setTimeout(revealBirthdayMessage, 2000);
+                    }
+                }
+            });
+        }
+
+        // Reveal the birthday message
+        function revealBirthdayMessage() {
+            gameComplete = true;
+            messageBox.innerHTML = `
+                <h2 class="celebration" style="font-size: 36px; margin-bottom: 20px;">
+                    🎉 HAPPY BIRTHDAY! 🎉
+                </h2>
+                <p style="font-size: 20px; line-height: 1.8;">
+                    You've discovered all the memories!<br>
+                    <span class="sparkle">✨</span> May your special day be filled with joy, love, and laughter! <span class="sparkle">✨</span><br>
+                    Here's to another amazing year ahead! 🎂🎈🎁
+                </p>
+            `;
+            createConfetti();
+        }
+
+        // Confetti effect
+        function createConfetti() {
+            const confetti = [];
+            for (let i = 0; i < 50; i++) {
+                confetti.push({
+                    x: Math.random() * canvas.width,
+                    y: -10,
+                    speed: Math.random() * 3 + 2,
+                    size: Math.random() * 5 + 3,
+                    color: ['#ff6b6b', '#4ecdc4', '#45b7d1', '#f7b731', '#5f27cd'][Math.floor(Math.random() * 5)]
+                });
+            }
+
+            function animateConfetti() {
+                confetti.forEach(c => {
+                    c.y += c.speed;
+                    ctx.fillStyle = c.color;
+                    ctx.fillRect(c.x, c.y, c.size, c.size);
+                });
+
+                if (confetti.some(c => c.y < canvas.height)) {
+                    requestAnimationFrame(animateConfetti);
+                }
+            }
+            animateConfetti();
+        }
+
+        // Draw everything
+        function draw() {
+            // Clear canvas
+            ctx.fillStyle = '#87ceeb';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Draw grass patches
+            ctx.fillStyle = '#90ee90';
+            for (let i = 0; i < 10; i++) {
+                ctx.fillRect(i * 60, canvas.height - 50, 60, 50);
+            }
+
+            // Draw decorations
+            ctx.font = '30px Arial';
+            decorations.forEach(deco => {
+                ctx.fillText(deco.type, deco.x, deco.y);
+            });
+
+            // Draw memories
+            ctx.font = '35px Arial';
+            memories.forEach(memory => {
+                if (!memory.discovered) {
+                    // Glow effect
+                    ctx.shadowBlur = 15;
+                    ctx.shadowColor = '#ffd700';
+                    ctx.fillText(memory.icon, memory.x, memory.y + 30);
+                    ctx.shadowBlur = 0;
+                } else {
+                    ctx.globalAlpha = 0.3;
+                    ctx.fillText('✓', memory.x + 5, memory.y + 30);
+                    ctx.globalAlpha = 1;
+                }
+            });
+
+            // Draw player
+            ctx.fillStyle = player.color;
+            ctx.beginPath();
+            ctx.arc(player.x + player.width/2, player.y + player.height/2, player.width/2, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Player face
+            ctx.fillStyle = 'white';
+            ctx.beginPath();
+            ctx.arc(player.x + 18, player.y + 12, 3, 0, Math.PI * 2);
+            ctx.arc(player.x + 28, player.y + 12, 3, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.strokeStyle = 'white';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.arc(player.x + 23, player.y + 18, 6, 0, Math.PI);
+            ctx.stroke();
+        }
+
+        // Game loop
+        function gameLoop() {
+            updatePlayer();
+            checkCollisions();
+            draw();
+            requestAnimationFrame(gameLoop);
+        }
+
+        // Start the game
+        gameLoop();
+    </script>
+</body>
+</html>

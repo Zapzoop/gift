@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cosmic Journey</title>
+    <link rel="stylesheet" href="journey.css">
+</head>
+<body>
+    <!-- Same parallax background as landing page -->
+    <div class="parallax-container">
+        <div class="stars-layer stars-far" data-speed="0.2">
+            <div class="star" style="top: 10%; left: 15%;"></div>
+            <div class="star" style="top: 25%; left: 45%;"></div>
+            <div class="star" style="top: 40%; left: 75%;"></div>
+            <div class="star" style="top: 60%; left: 20%;"></div>
+            <div class="star" style="top: 75%; left: 85%;"></div>
+            <div class="star" style="top: 15%; left: 65%;"></div>
+            <div class="star" style="top: 55%; left: 50%;"></div>
+            <div class="star" style="top: 85%; left: 30%;"></div>
+        </div>
+
+        <div class="stars-layer stars-mid" data-speed="0.5">
+            <div class="star" style="top: 20%; left: 30%;"></div>
+            <div class="star" style="top: 35%; left: 60%;"></div>
+            <div class="star" style="top: 50%; left: 10%;"></div>
+            <div class="star" style="top: 70%; left: 70%;"></div>
+            <div class="star" style="top: 30%; left: 90%;"></div>
+            <div class="star" style="top: 65%; left: 40%;"></div>
+        </div>
+
+        <div class="stars-layer stars-close" data-speed="1">
+            <div class="star" style="top: 12%; left: 80%;"></div>
+            <div class="star" style="top: 28%; left: 25%;"></div>
+            <div class="star" style="top: 45%; left: 55%;"></div>
+            <div class="star" style="top: 68%; left: 15%;"></div>
+            <div class="star" style="top: 80%; left: 65%;"></div>
+        </div>
+    </div>
+
+    <!-- Progress indicator -->
+    <div class="progress-bar">
+        <div class="progress-text">Question <span id="current-question">1</span> of <span id="total-questions">4</span></div>
+        <div class="progress-dots" id="progress-dots"></div>
+    </div>
+
+    <!-- Main content container -->
+    <div class="question-container" id="question-container">
+        <!-- Question card -->
+        <div class="question-card" id="question-card">
+            <h2 class="question-title" id="question-title">PLACEHOLDER QUESTION</h2>
+        </div>
+
+        <!-- Triangle formation choices -->
+        <div class="choices-triangle">
+            <!-- Top choice -->
+            <div class="choice-item choice-top" data-choice="top">
+                <div class="spaceship-wrapper">
+                    <!-- ASSET PLACEHOLDER: Replace with spaceship image -->
+                    <img src="spaceship.png" alt="Spaceship" class="spaceship">
+                </div>
+                <div class="answer-text" id="answer-top">Top Answer</div>
+            </div>
+
+            <!-- Left choice -->
+            <div class="choice-item choice-left" data-choice="left">
+                <div class="spaceship-wrapper">
+                    <!-- ASSET PLACEHOLDER: Replace with spaceship image -->
+                    <img src="spaceship.png" alt="Spaceship" class="spaceship">
+                </div>
+                <div class="answer-text" id="answer-left">Left Answer</div>
+            </div>
+
+            <!-- Right choice -->
+            <div class="choice-item choice-right" data-choice="right">
+                <div class="spaceship-wrapper">
+                    <!-- ASSET PLACEHOLDER: Replace with spaceship image -->
+                    <img src="spaceship.png" alt="Spaceship" class="spaceship">
+                </div>
+                <div class="answer-text" id="answer-right">Right Answer</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ending screen (hidden initially) -->
+    <div class="ending-container" id="ending-container" style="display: none;">
+        <div class="ending-card">
+            <h1 class="ending-title" id="ending-title">YOUR COSMIC DESTINY</h1>
+            <div class="ending-content" id="ending-content">
+                <p>Ending message goes here...</p>
+            </div>
+            <button class="restart-button" id="restart-button">Journey Again</button>
+        </div>
+    </div>
+
+    <!-- Confetti container -->
+    <div id="confetti-container"></div>
+
+    <script src="story-data.js"></script>
+    <script src="journey.js"></script>
+</body>
+</html>
